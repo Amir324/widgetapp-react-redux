@@ -11,8 +11,10 @@ import {
   DELETE_KEY_VALUE_ROW,
   SAVE_WIDGET,
   WIDGET,
+  KEY_VALUE_PAIRS,
 } from "../constants/widgets";
 import { loadFromLocalStorage } from "../utils/utils";
+
 
 const WIDGET_INIT_STATE = {
   [WIDGET.id]: "",
@@ -95,9 +97,21 @@ export default function widgetsReducer(state = initialState, action) {
     }
 
     case DELETE_WIDGET: {
-      let updatedWidgets = state.widgets.filter(
-        (_widget) => _widget?.id !== action?.widgetId
-      );
+      const { widgetId } = action;
+      let updatedWidgets = state?.widgets?.filter(({ id }) => id !== widgetId);
+
+      let updatedSelectedWidget;
+      if (widgetId === state?.selectedWidget?.id) {
+        if (state?.widgets?.length === 1) {
+          updatedSelectedWidget = {};
+        }
+
+        return {
+          ...state,
+          widgets: updatedWidgets,
+          selectedWidget: updatedSelectedWidget,
+        };
+      }
 
       return {
         ...state,
@@ -115,7 +129,7 @@ export default function widgetsReducer(state = initialState, action) {
     case ADD_KEY_VALUE_ROW: {
       let newKeyValuePairs = [
         ...state.inEditWidget.keyValuePairs,
-        { key: "", value: "" },
+        { [KEY_VALUE_PAIRS.key]: "", [KEY_VALUE_PAIRS.value]: "" },
       ];
 
       let newInEditWidget = {
@@ -131,11 +145,11 @@ export default function widgetsReducer(state = initialState, action) {
 
     case DELETE_KEY_VALUE_ROW: {
       let index = action?.index;
-      let newKeyValuePairs = state.inEditWidget.keyValuePairs.filter(
+      let newKeyValuePairs = state?.inEditWidget?.keyValuePairs?.filter(
         (_, _index) => !(_index === index)
       );
       let newInEditWidget = {
-        ...state.inEditWidget,
+        ...state?.inEditWidget,
         keyValuePairs: newKeyValuePairs,
       };
 
