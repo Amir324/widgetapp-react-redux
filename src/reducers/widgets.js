@@ -11,7 +11,6 @@ import {
   DELETE_KEY_VALUE_ROW,
   SAVE_WIDGET,
   WIDGET,
-  KEY_VALUE_PAIRS,
 } from "../constants/widgets";
 import { loadFromLocalStorage } from "../utils/utils";
 

@@ -37,7 +37,7 @@ const Home = ({
 }) => {
   useEffect(() => {
     onGetWidgets();
-  }, []);
+  }, [onGetWidgets]);
 
   const onEditHandler = (id) => {
     onShowModal(true);
