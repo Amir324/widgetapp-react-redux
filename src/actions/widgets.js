@@ -10,63 +10,63 @@ import {
   SAVE_WIDGET,
 } from "../constants/widgets";
 
-export const getWidgets = () => (dispatch) => {
-  dispatch({
+export const getWidgets = () => {
+  return {
     type: GET_WIDGETS,
-  });
+  };
 };
 
-export const selectWidget = (id) => (dispatch) => {
-  dispatch({
+export const selectWidget = (id) => {
+  return {
     type: SELECT_WIDGET,
     widgetId: id,
-  });
+  };
 };
 
-export const editWidget = (id) => (dispatch) => {
-  dispatch({
+export const editWidget = (id) => {
+  return {
     type: EDIT_WIDGET,
     widgetId: id,
-  });
+  };
 };
 
-export const saveWidget = (widget) => (dispatch) => {
-  dispatch({
+export const saveWidget = (widget) => {
+  return {
     type: SAVE_WIDGET,
     widget,
-  });
+  };
 };
 
-export const deleteWidget = (id) => (dispatch) => {
-  dispatch({
+export const deleteWidget = (id) => {
+  return {
     type: DELETE_WIDGET,
     widgetId: id,
-  });
+  };
 };
 
-export const createWidget = (widget) => (dispatch) => {
-  dispatch({
+export const createWidget = (widget) => {
+  return {
     type: CREATE_WIDGET,
     widget,
-  });
+  };
 };
 
-export const updateInEditWidget = (widget) => (dispatch) => {
-  dispatch({
+export const updateInEditWidget = (widget) => {
+  return {
     type: UPDATE_IN_EDIT_WIDGET,
     widget,
-  });
+  };
 };
 
-export const addKeyValueRowToInEditWidget = () => (dispatch) => {
-  dispatch({
+export const addKeyValueRowToInEditWidget = () => {
+  return {
     type: ADD_KEY_VALUE_ROW,
-  });
+  };
 };
 
-export const deleteKeyValueRowToInEditWidget = (index) => (dispatch) => {
-  dispatch({
+export const deleteKeyValueRowToInEditWidget = (index) => {
+  return {
     type: DELETE_KEY_VALUE_ROW,
     index,
-  });
+  };
 };

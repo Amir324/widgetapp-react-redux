@@ -1,8 +1,8 @@
-import {SHOW_MODAL} from "../constants/ui";
+import { SHOW_MODAL } from "../constants/ui";
 
-export const showModal = (bool) => (dispatch) => {
-    dispatch({
-        type: SHOW_MODAL,
-        isModalOpen: bool,
-    });
+export const showModal = (bool) => {
+  return {
+    type: SHOW_MODAL,
+    isModalOpen: bool,
+  };
 };

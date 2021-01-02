@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import thunk from "redux-thunk";
+import { createStore, compose } from "redux";
 import rootReducer from "../reducers/index";
 import { saveToLocalStorage } from "../utils/utils";
 
@@ -10,7 +9,7 @@ const initialState = {};
 const store = createStore(
   rootReducer,
   initialState,
-  composeEnhancer(applyMiddleware(thunk))
+  composeEnhancer()
 );
 
 store.subscribe(() => saveToLocalStorage(store.getState().widgets.widgets));
